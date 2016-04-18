@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.octo.android.robospice.sample.retrofit"
-        minSdkVersion 10
-        targetSdkVersion 17
+        minSdkVersion 15
+        targetSdkVersion 22
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }

@@ -1,8 +1,11 @@
 package com.octo.android.robospice.sample.retrofit.network;
 
+import android.os.AsyncTask;
+
 import com.octo.android.robospice.retrofit.RetrofitGsonSpiceService;
 
 import retrofit.RestAdapter;
+import retrofit.android.MainThreadExecutor;
 
 public class SampleRetrofitSpiceService extends RetrofitGsonSpiceService {
 
@@ -20,7 +23,9 @@ public class SampleRetrofitSpiceService extends RetrofitGsonSpiceService {
     }
 
     protected RestAdapter.Builder createRestAdapterBuilder() {
-        return new RestAdapter.Builder().setEndpoint(getServerUrl()).setConverter(getConverter()).setLogLevel(RestAdapter.LogLevel.FULL);
+        return new RestAdapter.Builder().setEndpoint(getServerUrl()).setConverter(getConverter()).setLogLevel(RestAdapter.LogLevel.FULL)
+                .setExecutors(AsyncTask.THREAD_POOL_EXECUTOR,
+                        new MainThreadExecutor());
     }
 
 }
