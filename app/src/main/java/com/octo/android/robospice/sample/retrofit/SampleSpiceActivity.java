@@ -1,6 +1,7 @@
 package com.octo.android.robospice.sample.retrofit;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -78,11 +79,14 @@ public class SampleSpiceActivity extends BaseSampleSpiceActivity {
         @Override
         public void onRequestFailure(SpiceException spiceException) {
             Toast.makeText(SampleSpiceActivity.this, "failure", Toast.LENGTH_SHORT).show();
+            Log.e("NJW","*** On Request FAilure" );
         }
 
         @Override
         public void onRequestSuccess(final Contributor.List result) {
             Toast.makeText(SampleSpiceActivity.this, "success", Toast.LENGTH_SHORT).show();
+            Log.e("NJW","*** On Request FAilure" );
+
             updateContributors(result);
         }
     }
