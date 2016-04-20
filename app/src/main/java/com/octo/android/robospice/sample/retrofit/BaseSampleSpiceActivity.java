@@ -27,7 +27,7 @@ public abstract class BaseSampleSpiceActivity extends Activity {
         super.onStop();
     }
 
-    protected SpiceManager getSpiceManager() {
+    public SpiceManager getSpiceManager() {
         return spiceManager;
     }
 

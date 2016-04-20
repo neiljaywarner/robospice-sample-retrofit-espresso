@@ -2,7 +2,9 @@ package com.octo.android.robospice.sample.retrofit;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,12 +41,21 @@ public class SampleSpiceActivity extends BaseSampleSpiceActivity {
         mTextView = (TextView) findViewById(R.id.textview_lorem_ipsum);
 
         githubRequest = new SampleRetrofitSpiceRequest("octo-online", "robospice");
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSpiceManager().execute(githubRequest, "github", DurationInMillis.ONE_MINUTE, new ListContributorRequestListener());
+
+            }
+        });
+        //TODO: Try out jack options and lambdas just for the 5 minute experience, although if it doesn't work with instant run not sure if we want to use it anytime soon.
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        getSpiceManager().execute(githubRequest, "github", DurationInMillis.ONE_MINUTE, new ListContributorRequestListener());
     }
 
     // ============================================================================================
@@ -85,7 +96,7 @@ public class SampleSpiceActivity extends BaseSampleSpiceActivity {
         @Override
         public void onRequestSuccess(final Contributor.List result) {
             Toast.makeText(SampleSpiceActivity.this, "success", Toast.LENGTH_SHORT).show();
-            Log.e("NJW","*** On Request FAilure" );
+            Log.e("NJW","*** On Request Success" );
 
             updateContributors(result);
         }
