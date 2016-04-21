@@ -1,9 +1,6 @@
 package com.example.neil.espressotest;
 
-import android.app.Instrumentation;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
-import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
@@ -28,7 +25,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @LargeTest
 public class HelloWorldTest {
 
-    private IntentServiceIdlingResource idlingResource;
+    private RobospiceIdlingResource idlingResource;
 
     /***
      * IMPORTANT NOTE: Screen must be on to run the tests.a
@@ -38,7 +35,7 @@ public class HelloWorldTest {
 
     @Before
     public void registerIntentServiceIdlingResource() {
-        idlingResource = new IntentServiceIdlingResource(mainActivityActivityTestRule.getActivity());
+        idlingResource = new RobospiceIdlingResource(mainActivityActivityTestRule.getActivity());
         Espresso.registerIdlingResources(idlingResource);
         onView(ViewMatchers.withId(R.id.button)).perform(ViewActions.click());
     }
