@@ -39,12 +39,6 @@ public class IntentServiceIdlingResource implements IdlingResource {
   }
 
   private boolean isIntentServiceRunning() {
-    if (activity.getSpiceManager().getPendingRequestCount() > 0) {
-      return true;
-    } else {
-      return false;
-
-    }
-
+      return  activity.getSpiceManager().getPendingRequestCount() > 0;
   }
 }
