@@ -17,7 +17,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 
@@ -46,14 +48,14 @@ public class HelloWorldTest {
     }
 
     @Test
-    public void afterNetworkRequest_test()
+    public void afterNetworkRequestText()
     {
         onView(ViewMatchers.withId(R.id.textview_lorem_ipsum)).check(matches(withText("RoboSpice contributors :\n\n\tstephanenicolas\t(668)\n\trciovati\t(99)\n\tnkeskinov\t(22)\n\tseva-ask\t(10)\n\tweefbellington\t(9)\n\tjeromevdl\t(5)\n\tsoftwaremaverick\t(2)\n\tgkylafas\t(2)\n\tpdegand\t(2)\n\tTannerPerrien\t(2)\n\tricharth\t(2)\n\tshenwill\t(2)\n\tlionleaf\t(1)\n\tagrebnev\t(1)\n\tflorianmski\t(1)\n\tdgyuri\t(1)\n\tjmeiss\t(1)\n\tjorgevila\t(1)\n\tMgamerz\t(1)\n\tintrications\t(1)\n\tmikegr\t(1)\n\tanton-pogonets\t(1)\n\tlukesleeman\t(1)\n\tsplatte\t(1)\n")));
     }
 
     @Test
-    public void beforeNetworkRequest_test()
+    public void beforeNetworkRequestTextIsNotDisplayed()
     {
-        onView(ViewMatchers.withId(R.id.textview_lorem_ipsum)).check(matches(withText("RoboSpice contributors :")));
+        onView(withText("RoboSpice contributors :")).check(doesNotExist());
     }
 }
